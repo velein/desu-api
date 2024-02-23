@@ -21,13 +21,22 @@ app.get("/anime", async (req, res) => {
 });
 
 app.get("/anime/:animeID", async (req, res) => {
-  const { data } = await supabase
+  const { data: anime } = await supabase
     .from("anime")
     .select("*")
     .eq("id", req.params.animeID)
     .single();
 
-  res.json(data);
+  const { data: episodes } = await supabase
+    .from("episodes")
+    .select("*")
+    .eq("animeID", req.params.animeID)
+    .single();
+
+  res.json({
+    anime,
+    episodes,
+  });
 });
 
 app.get("/anime/:animeID/episode/:episodeID", async (req, res) => {
