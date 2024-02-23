@@ -3,7 +3,7 @@ import express from "express";
 import playwright from "playwright";
 
 const app = express();
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 8080;
 
 const supabase = createClient(
   `https://crsemvvyoczkgaxjzkrf.supabase.co`,
@@ -84,6 +84,6 @@ app.post("/anime/:animeID/episode/:episode", async (req, res) => {
   res.json(data);
 });
 
-app.listen(PORT, () => {
-  console.log(`Server is running at http://localhost:${PORT}`);
+app.listen(port, () => {
+  console.log(`Server is running at http://localhost:${port}`);
 });
