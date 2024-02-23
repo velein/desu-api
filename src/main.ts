@@ -3,7 +3,7 @@ import express from "express";
 import playwright from "playwright";
 
 const app = express();
-const PORT = 8080;
+const port = process.env.PORT || 3000;
 
 const supabase = createClient(
   `https://crsemvvyoczkgaxjzkrf.supabase.co`,
