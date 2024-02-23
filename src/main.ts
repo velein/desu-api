@@ -30,8 +30,7 @@ app.get("/anime/:animeID", async (req, res) => {
   const { data: episodes } = await supabase
     .from("episodes")
     .select("*")
-    .eq("animeID", req.params.animeID)
-    .single();
+    .eq("animeID", req.params.animeID);
 
   res.json({
     anime,
